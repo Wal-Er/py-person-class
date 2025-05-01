@@ -20,8 +20,8 @@ def create_person_list(people: list) -> list:
 
     for person in persons:
         if hasattr(person, "wife"):
-            person.wife = person.people.get(person.wife)
+            person.wife = Person.people.get(person.wife)
         elif hasattr(person, "husband"):
-            person.husband = person.people.get(person.husband)
+            person.husband = Person.people.get(person.husband)
 
     return persons
