@@ -13,14 +13,10 @@ def create_person_list(people: list) -> list:
         persons.append(Person(human["name"], human["age"]))
 
         persons_index = persons.index(persons[-1])
-        human_spouse_key = list(human.keys())[2]
-        if human[human_spouse_key]:
-            human_spouse_value = human[human_spouse_key]
-            setattr(
-                persons[persons_index],
-                human_spouse_key,
-                human_spouse_value
-            )
+        if human.get("wife"):
+            setattr(persons[persons_index], "wife", human["wife"])
+        elif human.get("husband"):
+            setattr(persons[persons_index], "husband", human["husband"])
 
     for person in persons:
         if hasattr(person, "wife"):
